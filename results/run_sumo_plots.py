@@ -121,24 +121,28 @@ for calc in CALCS:
         failed.append(calc["name"])
         continue
 
-    out_prefix = f"dos_{calc['name']}"
-
-    # 1. Total + element-projected DOS (most informative)
+    # Plot 1: total + element-projected DOS (LORBIT=11 provides partial charges)
+    prefix_elem = f"dos_{calc['name']}_elements"
     success = run_sumo_dosplot(
         work_dir,
-        out_prefix=out_prefix,
+        out_prefix=prefix_elem,
         elements=["Ge", "Sn"],
     )
-    if not success:
-        # Retry without element projections (in case of partial DOS issues)
-        print("  Retrying without element projections...")
-        success = run_sumo_dosplot(work_dir, out_prefix=out_prefix)
-
     if success:
-        moved = collect_outputs(work_dir, out_prefix, RESULTS_DIR, f"sumo_dos_{calc['name']}")
-        print(f"  Output: {moved}")
+        moved = collect_outputs(work_dir, prefix_elem, RESULTS_DIR, f"sumo_dos_{calc['name']}_elements")
+        print(f"  Element-projected output: {moved}")
     else:
-        print(f"  FAILED for {calc['name']}")
+        print(f"  Element-projected DOS failed — falling back to total DOS")
+        failed.append(f"{calc['name']}_elements")
+
+    # Plot 2: total DOS only (always works as fallback)
+    prefix_total = f"dos_{calc['name']}_total"
+    success_total = run_sumo_dosplot(work_dir, out_prefix=prefix_total)
+    if success_total:
+        moved = collect_outputs(work_dir, prefix_total, RESULTS_DIR, f"sumo_dos_{calc['name']}_total")
+        print(f"  Total DOS output: {moved}")
+    else:
+        print(f"  FAILED total DOS for {calc['name']}")
         failed.append(calc["name"])
 
 
@@ -146,7 +150,7 @@ for calc in CALCS:
 print(f"\n{'='*60}")
 print("SUMMARY")
 print(f"{'='*60}")
-plots = [f for f in os.listdir(RESULTS_DIR) if f.startswith("sumo_dos_")]
+plots = [f for f in os.listdir(RESULTS_DIR) if f.startswith("sumo_dos_") and f.endswith(".png")]
 print(f"Generated {len(plots)} plot file(s) in results/:")
 for p in sorted(plots):
     print(f"  {p}")
