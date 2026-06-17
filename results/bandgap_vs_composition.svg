@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+     width="700" height="500" viewBox="0 0 700 500">
+
+  <!-- Background -->
+  <rect width="700" height="500" fill="white"/>
+
+  <!-- Title -->
+  <text x="350" y="32" font-family="Arial, sans-serif" font-size="15" font-weight="bold"
+        text-anchor="middle" fill="#222">Band Gap vs Sn Composition</text>
+  <text x="350" y="52" font-family="Arial, sans-serif" font-size="11" font-style="italic"
+        text-anchor="middle" fill="#555">Amorphous Ge₁₋ₓSnₓ · PBE · 216-atom supercell · Γ-only</text>
+
+  <!-- Plot area: x=[80,620], y=[420,80] (top=small y, bottom=large y) -->
+  <!-- x-axis: Sn% from 60 to 95 -->
+  <!-- y-axis: band gap from 0 to 0.30 eV -->
+
+  <!-- Axes -->
+  <line x1="80" y1="80" x2="80" y2="420" stroke="#333" stroke-width="1.5"/>
+  <line x1="80" y1="420" x2="620" y2="420" stroke="#333" stroke-width="1.5"/>
+
+  <!-- Y-axis label -->
+  <text x="22" y="260" font-family="Arial" font-size="13" text-anchor="middle"
+        fill="#333" transform="rotate(-90,22,260)">Band Gap (eV)</text>
+
+  <!-- X-axis label -->
+  <text x="350" y="468" font-family="Arial" font-size="13" text-anchor="middle" fill="#333">Sn fraction (%)</text>
+
+  <!-- Y-axis ticks: 0.0 to 0.30 in steps of 0.05 -->
+  <!-- y_plot = 420 - (value/0.30) * 340 -->
+  <!-- 0.00 → y=420, 0.05→y=363.3, 0.10→y=306.7, 0.15→y=250, 0.20→y=193.3, 0.25→y=136.7, 0.30→y=80 -->
+  <line x1="80" y1="420" x2="76" y2="420" stroke="#333" stroke-width="1"/>
+  <text x="70" y="424" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.00</text>
+  <line x1="80" y1="363" x2="76" y2="363" stroke="#333" stroke-width="1"/>
+  <text x="70" y="367" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.05</text>
+  <line x1="80" y1="307" x2="76" y2="307" stroke="#333" stroke-width="1"/>
+  <text x="70" y="311" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.10</text>
+  <line x1="80" y1="250" x2="76" y2="250" stroke="#333" stroke-width="1"/>
+  <text x="70" y="254" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.15</text>
+  <line x1="80" y1="193" x2="76" y2="193" stroke="#333" stroke-width="1"/>
+  <text x="70" y="197" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.20</text>
+  <line x1="80" y1="137" x2="76" y2="137" stroke="#333" stroke-width="1"/>
+  <text x="70" y="141" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.25</text>
+  <line x1="80" y1="80" x2="76" y2="80" stroke="#333" stroke-width="1"/>
+  <text x="70" y="84" font-family="Arial" font-size="10" text-anchor="end" fill="#333">0.30</text>
+
+  <!-- Horizontal gridlines -->
+  <line x1="80" y1="363" x2="620" y2="363" stroke="#ddd" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <line x1="80" y1="307" x2="620" y2="307" stroke="#ddd" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <line x1="80" y1="250" x2="620" y2="250" stroke="#ddd" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <line x1="80" y1="193" x2="620" y2="193" stroke="#ddd" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <line x1="80" y1="137" x2="620" y2="137" stroke="#ddd" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+  <!-- X-axis ticks: Sn% 60→95 range, plot range 80→620 = 540 px for 35% span
+       x_plot = 80 + (sn_pct - 60) / 35 * 540
+       60% → 80, 65% → 157.1, 70% → 234.3, 75% → 311.4, 80% → 388.6, 85% → 465.7, 90% → 542.9, 95% → 620
+  -->
+  <line x1="80" y1="420" x2="80" y2="424" stroke="#333" stroke-width="1"/>
+  <text x="80" y="436" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">60</text>
+  <line x1="234" y1="420" x2="234" y2="424" stroke="#333" stroke-width="1"/>
+  <text x="234" y="436" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">70</text>
+  <line x1="389" y1="420" x2="389" y2="424" stroke="#333" stroke-width="1"/>
+  <text x="389" y="436" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">80</text>
+  <line x1="543" y1="420" x2="543" y2="424" stroke="#333" stroke-width="1"/>
+  <text x="543" y="436" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">90</text>
+  <line x1="620" y1="420" x2="620" y2="424" stroke="#333" stroke-width="1"/>
+  <text x="620" y="436" font-family="Arial" font-size="10" text-anchor="middle" fill="#333">95</text>
+
+  <!-- Data points:
+    Ge73Sn143: Sn=66.2%, gap=0.1962 eV
+      x = 80 + (66.2-60)/35*540 = 80 + 6.2/35*540 = 80 + 95.66 = 175.7 ≈ 176
+      y = 420 - (0.1962/0.30)*340 = 420 - 222.4 = 197.6 ≈ 198
+
+    Ge43Sn173: Sn=80.1%, gap=0.2323 eV
+      x = 80 + (80.1-60)/35*540 = 80 + 20.1/35*540 = 80 + 310.1 = 390.1 ≈ 390
+      y = 420 - (0.2323/0.30)*340 = 420 - 263.3 = 156.7 ≈ 157
+
+    Ge22Sn194: Sn=89.8%, gap=0.2337 eV
+      x = 80 + (89.8-60)/35*540 = 80 + 29.8/35*540 = 80 + 459.9 = 539.9 ≈ 540
+      y = 420 - (0.2337/0.30)*340 = 420 - 264.9 = 155.1 ≈ 155
+  -->
+
+  <!-- Trend line through data points -->
+  <polyline points="176,198 390,157 540,155" fill="none" stroke="#999" stroke-width="1.5" stroke-dasharray="5,3"/>
+
+  <!-- Bars / vertical drop lines for bar-chart feel -->
+  <line x1="176" y1="198" x2="176" y2="420" stroke="#2196F3" stroke-width="2" opacity="0.3"/>
+  <line x1="390" y1="157" x2="390" y2="420" stroke="#FF5722" stroke-width="2" opacity="0.3"/>
+  <line x1="540" y1="155" x2="540" y2="420" stroke="#4CAF50" stroke-width="2" opacity="0.3"/>
+
+  <!-- Data point: Ge73Sn143 (66.2% Sn, 0.196 eV) - blue square -->
+  <rect x="168" y="190" width="16" height="16" fill="#2196F3" stroke="#1565C0" stroke-width="1.2" rx="2"/>
+  <text x="176" y="185" font-family="Arial" font-size="10" text-anchor="middle" fill="#1565C0" font-weight="bold">0.196 eV</text>
+  <text x="176" y="452" font-family="Arial" font-size="10" text-anchor="middle" fill="#1565C0">66.2%</text>
+
+  <!-- Data point: Ge43Sn173 (80.1% Sn, 0.232 eV) - orange circle -->
+  <circle cx="390" cy="157" r="9" fill="#FF5722" stroke="#BF360C" stroke-width="1.2"/>
+  <text x="390" y="145" font-family="Arial" font-size="10" text-anchor="middle" fill="#BF360C" font-weight="bold">0.232 eV</text>
+  <text x="390" y="452" font-family="Arial" font-size="10" text-anchor="middle" fill="#BF360C">80.1%</text>
+
+  <!-- Data point: Ge22Sn194 (89.8% Sn, 0.234 eV) - green triangle -->
+  <polygon points="540,146 549,161 531,161" fill="#4CAF50" stroke="#2E7D32" stroke-width="1.2"/>
+  <text x="555" y="160" font-family="Arial" font-size="10" text-anchor="start" fill="#2E7D32" font-weight="bold">0.234 eV</text>
+  <text x="540" y="452" font-family="Arial" font-size="10" text-anchor="middle" fill="#2E7D32">89.8%</text>
+
+  <!-- Legend -->
+  <rect x="90" y="95" width="210" height="74" fill="white" stroke="#ddd" stroke-width="1" rx="4"/>
+  <rect x="100" y="107" width="12" height="12" fill="#2196F3" stroke="#1565C0" stroke-width="1" rx="1"/>
+  <text x="118" y="118" font-family="Arial" font-size="10" fill="#333">Ge73Sn143 (66% Sn)</text>
+  <circle cx="106" cy="131" r="6" fill="#FF5722" stroke="#BF360C" stroke-width="1"/>
+  <text x="118" y="135" font-family="Arial" font-size="10" fill="#333">Ge43Sn173 (80% Sn)</text>
+  <polygon points="106,150 112,160 100,160" fill="#4CAF50" stroke="#2E7D32" stroke-width="1"/>
+  <text x="118" y="158" font-family="Arial" font-size="10" fill="#333">Ge22Sn194 (90% Sn)</text>
+
+  <!-- Note -->
+  <text x="350" y="490" font-family="Arial" font-size="9" font-style="italic" text-anchor="middle" fill="#888">
+    Γ-point only · SIGMA=0.05 eV · values indicative, not quantitative
+  </text>
+</svg>
